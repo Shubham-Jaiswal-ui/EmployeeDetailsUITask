@@ -5,15 +5,18 @@
     font-size: calc(20px + 2vmin);
     color: rgb(15, 5, 5);
   }
-  .index-styling {
-    background-color: red;
-  }
   .css-qfz70r-MuiFormGroup-root {
     justify-content: space-evenly;
+  }
+  .css-34nofg-MuiTableRow-root{
+    &:hover{
+      background-color:#ededed;
+    }
   }
   .css-1q1u3t4-MuiTableRow-root {
     .css-y8ay40-MuiTableCell-root {
       font-weight: 600;
+      background-color: #ededed;
     }
   }
   .checkbox-conatiner {

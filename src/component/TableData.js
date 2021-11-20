@@ -12,7 +12,9 @@ import { dataLoaderAction } from "../redux/action/action";
 import { useDispatch, useSelector } from "react-redux";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
-import { isBlanckData } from "../utils/utils";
+import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
+import { isBlankData } from "../utils/utils";
 
 const TableData = () => {
   const dispatch = useDispatch();
@@ -29,7 +31,7 @@ const TableData = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    !isBlanckData(dataSuccess, Object) && setTypeData(dataSuccess.items);
+    !isBlankData(dataSuccess, Object) && setTypeData(dataSuccess.items);
   }, [dataSuccess]);
 
   const checkboxClick = (data) => {
@@ -53,7 +55,11 @@ const TableData = () => {
       </Box>
     );
   } else if (dataError) {
-    return <div>Error</div>;
+    return (
+      <Stack sx={{ width: "100%" }} spacing={2}>
+        <Alert severity="error">!!!Some error Ocurred</Alert>
+      </Stack>
+    );
   } else {
     return (
       <>
