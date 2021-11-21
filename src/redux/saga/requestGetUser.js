@@ -5,5 +5,5 @@ export const requestGetUser = () => {
   return axios
     .get(URL)
     .then((response) => response.data)
-    .catch((error) => error);
+    .catch((error) => error.message);
 };

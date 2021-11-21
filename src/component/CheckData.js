@@ -29,15 +29,27 @@ export default function BasicTable({ checkboxClick }) {
   };
 
   const handleCheckChange = (e, data) => {
-    const checkedDataList = data?.map((val) => {
-      if (e.target.value == val.label) {
-        if (e.target.value == "All") {
-          return val;
-        } else {
-          return { ...val, checked: e.target.checked };
-        }
-      } else return val;
+    let checkedDataList = data?.map((val) => {
+      if (e.target.value == "All") {
+        return { ...val, checked: e.target.checked };
+      } else if (e.target.value !== "All" && e.target.value == val.label) {
+        return { ...val, checked: e.target.checked };
+      } 
+      else{
+        return val;
+      }
     });
+    
+    let checkedFilterStatus = checkedDataList.filter((val)=> val.label !== 'All').every(x => x.checked === true);
+    checkedDataList =checkedDataList.map((val) => {
+      if ( val.label === 'All') {
+        return { ...val, checked:checkedFilterStatus };
+      }
+      else{
+        return val;
+      }
+    });
+
     setCheckBoxes(checkedDataList);
     const filteredKey = filterKeyArray(checkedDataList);
     checkboxClick(filteredKey);

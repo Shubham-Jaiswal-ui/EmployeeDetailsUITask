@@ -11,7 +11,7 @@ const sagaMiddleware = createSagaMiddleware();
 
 const middleware = [sagaMiddleware];
 
-const store = createStore(reducer, {}, applyMiddleware(...middleware));
+const store = createStore(reducer, applyMiddleware(...middleware));
 
 sagaMiddleware.run(watcherSaga);
 
